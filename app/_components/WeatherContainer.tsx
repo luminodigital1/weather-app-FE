@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Box, Grid, Typography } from "@mui/material";
 
 import WeatherCard from "./WeatherCard";
+import WeatherGraph from "./WeatherGraph";
 
 import { useWeatherSocket } from "../_hooks/useWeatherSocket";
 
@@ -20,12 +21,22 @@ interface WeatherData {
 
 const WeatherContainer: React.FC = () => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
+  const [temperatureHistory, setTemperatureHistory] = useState<number[]>([]);
+  const [windSpeedHistory, setWindSpeedHistory] = useState<number[]>([]);
+  const [humidityHistory, setHumidityHistory] = useState<number[]>([]);
+  const [timeHistory, setTimeHistory] = useState<string[]>([]);
   const weatherDataResponse = useWeatherSocket();
+
 
   useEffect(() => {
     if (!weatherDataResponse) return;
 
     setWeatherData(weatherDataResponse);
+    setTemperatureHistory((prev) => [...prev, weatherDataResponse.temperature]);
+    setWindSpeedHistory((prev) => [...prev, weatherDataResponse.windSpeed]);
+    setHumidityHistory((prev) => [...prev, weatherDataResponse.humidity]);
+    const time = weatherDataResponse.currentTime.split(" at ")[1];
+    setTimeHistory((prev) => [...prev, time]);
   }, [weatherDataResponse]);
 
 
@@ -52,6 +63,14 @@ const WeatherContainer: React.FC = () => {
               <WeatherCard {...weatherData} />
             </Grid>
           </Grid>
+          <Box mt={6} p={4}>
+            <WeatherGraph
+              timeHistory={timeHistory}
+              temperatureHistory={temperatureHistory}
+              windSpeedHistory={windSpeedHistory}
+              humidityHistory={humidityHistory}
+            />
+          </Box>
         </>
       ) : (
         <Typography color={"darkblue"} variant="body1">
