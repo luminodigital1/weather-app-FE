@@ -30,10 +30,7 @@ npm install
 ```
 
 ### Set Up Environment Variables
-Create a `.env` file in the root of the project and add the following environment variables:
-```env
-NEXT_PUBLIC_SOCKET_SERVER_URL=http://localhost:3000
-```
+Create a `.env` file in the root of the project and copy environment variables from `.env.example`
 
 ### Running the Application
 To start the application in development mode, run:
