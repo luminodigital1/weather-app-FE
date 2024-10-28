@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+# Weather Application Frontend
+
+## Overview
+
+The Weather Application Frontend is built using Next.js and provides a user interface for a weather application that interacts with the Weather Application Backend. This frontend connects to the backend via Socket.IO to receive real-time weather updates. By default, it displays weather data, time, and a line graph for New York City, with a dropdown to select other cities for which the weather data can be retrieved.
+
+### Key Features:
+- **Real-time Weather Updates**: Connects to the backend to receive live weather updates for the selected city.
+- **City Selection**: A dropdown menu allows users to select a city, fetching the corresponding weather data and graph.
+- **Data Visualization**: Displays weather data in a visually appealing manner using charts.
 
 ## Getting Started
 
-First, run the development server:
+To run the application locally, follow these steps:
 
+### Prerequisites
+- Ensure you have [Node.js](https://nodejs.org/en/download/) installed on your machine (version 14.x or later).
+
+### Clone the Repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/luminodigital1/weather-app-FE.git
+cd weather-app-FE
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Install Dependencies
+Run the following command to install the required dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Set Up Environment Variables
+Create a `.env` file in the root of the project and add the following environment variables:
+```env
+NEXT_PUBLIC_SOCKET_SERVER_URL=http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Running the Application
+To start the application in development mode, run:
+```bash
+npm run dev
+```
 
-## Learn More
+The server will start and listen on `http://localhost:3005`.
 
-To learn more about Next.js, take a look at the following resources:
+## Live Testing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+You can test the live application at the following URL: [weather-app-fe-ten.vercel.app](https://weather-app-fe-ten.vercel.app)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Acknowledgements
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [Next.js Documentation](https://nextjs.org/docs)
